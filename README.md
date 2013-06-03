@@ -1,7 +1,7 @@
-Screeny
+Screenly-manager
 =======
 
-Simple Digital signage tool
+A simple manager for the screenly OSE software
 
 Register
 ========
