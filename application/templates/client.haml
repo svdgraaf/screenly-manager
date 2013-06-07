@@ -1,0 +1,12 @@
+- extends 'base.haml'
+- load i18n
+
+- block 'header'
+    {{client.name}}
+
+- block 'content'
+    .span8
+        {{form}}
+    .span4
+        - if client.screenshot_url
+            %img{'src':'{{client.screenshot_url}}', 'width':'320'}
