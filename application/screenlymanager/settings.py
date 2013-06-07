@@ -1,7 +1,11 @@
 # Django settings for screenlymanager project.
+import os
+import sys
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+
+PROJECT_PATH = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -11,13 +15,8 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '',                      # Or path to database file if using sqlite3.
-        # The following settings are not used with sqlite3:
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '',                      # Set to empty string for default.
+        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': '/tmp/screenlymanager.db',                      # Or path to database file if using sqlite3.
     }
 }
 
@@ -54,21 +53,22 @@ MEDIA_ROOT = ''
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
-# Examples: "http://example.com/media/", "http://media.example.com/"
+# Examples: "http://example.com/media/', '"http://media.example.com/"
 MEDIA_URL = ''
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = PROJECT_PATH + '/static/'
 
 # URL prefix for static files.
-# Example: "http://example.com/static/", "http://static.example.com/"
+# Example: "http://example.com/static/', '"http://static.example.com/"
 STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
+    # PROJECT_PATH + '/static/',
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -80,6 +80,7 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    'coffeescript.finders.CoffeescriptFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -87,6 +88,8 @@ SECRET_KEY = 'v#ado7bh7)guz2wo6^1q(yk89)q!$%cww4+o_7n0uo1y(^__fm'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
+    'hamlpy.template.loaders.HamlPyFilesystemLoader',
+    'hamlpy.template.loaders.HamlPyAppDirectoriesLoader',
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
@@ -108,9 +111,7 @@ ROOT_URLCONF = 'screenlymanager.urls'
 WSGI_APPLICATION = 'screenlymanager.wsgi.application'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    PROJECT_PATH + '/templates',
 )
 
 INSTALLED_APPS = (
@@ -124,6 +125,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'coffeescript',
 )
 
 # A sample logging configuration. The only tangible logging

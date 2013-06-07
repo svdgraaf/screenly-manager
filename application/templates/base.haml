@@ -1,1 +1,51 @@
-!!!5
+- load coffeescript
+!!! 5
+%html
+
+  %head
+    %meta{'charset':'utf-8'}
+    %title Screenly OSE
+
+    %link{href:'{{ STATIC_URL }}css/bootstrap.css', 'rel':'stylesheet'}
+    %link{href:'{{ STATIC_URL }}css/datepicker.css', 'rel':'stylesheet'}
+    %link{href:'{{ STATIC_URL }}css/timepicker.css', 'rel':'stylesheet'}
+    %link{href:'{{ STATIC_URL }}css/toggle-switch.css', 'rel':'stylesheet'}
+    %link{href:'{{ STATIC_URL }}css/screenly.css', 'rel':'stylesheet'}
+
+    %script{'src':'{{ STATIC_URL }}js/underscore-1.4.3.min.js'}
+
+    %script{'src':'{{ STATIC_URL }}js/jquery-1.9.1.min.js'}
+    %script{'src':'{{ STATIC_URL }}js/jquery.iframe-transport.js'}
+
+    %script{'src':'{{ STATIC_URL }}js/backbone-0.9.10.min.js'} /needs jquery
+    %script{'src':'{{ STATIC_URL }}/js/backbone-hostname.js'}
+
+    %script{'src':'{{ STATIC_URL }}js/jquery-ui-1.10.1.custom.min.js'}
+    %script{'src':'{{ STATIC_URL }}js/jquery.fileupload.js'} / needs jqueryui.widget
+
+    %script{'src':'{{ STATIC_URL }}js/bootstrap.min.js'} /needs jquery
+    %script{'src':'{{ STATIC_URL }}js/bootstrap-datepicker.js'}
+    %script{'src':'{{ STATIC_URL }}js/bootstrap-timepicker.js'}
+
+    %script{'src':'{{ STATIC_URL }}js/moment.js'}
+    %script{'src':'{{ STATIC_URL }}{% coffeescript "js/screenly-ose.coffee" %}'}
+
+    %body
+        #request-error.navbar.navbar-fixed-top
+        .navbar.navbar-fixed-top
+            .navbar-inner
+                .container
+                    %a.brand{href:'/'}
+                        %strong ScreenlyManager
+
+        .container
+            .row
+                .span12
+                    %h1.page-header
+                        .pull-right
+                            %a#add-asset-button.btn.btn-primary{href:'#'}
+                                %i.icon-plus.icon-white
+                                Add Screenly client
+                        Foobar
+            .row
+                - block 'content'

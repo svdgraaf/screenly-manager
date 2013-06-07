@@ -15,6 +15,7 @@ def resolve_callback(sdRef, flags, interfaceIndex, errorCode, fullname,
         print '  fullname   =', fullname
         print '  hosttarget =', hosttarget
         print '  port       =', port
+        print '  txtRecord  =', txtRecord
         resolved.append(True)
 
 
