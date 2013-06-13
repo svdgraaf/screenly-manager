@@ -25,7 +25,7 @@ class Client(models.Model):
         return None
 
     def is_online(self):
-        response = os.system("ping -c 1 " + self.last_ip)
+        response = os.system("ping -t 1 -c 1 " + self.last_ip)
         if response == 0:
             self.last_active = datetime.datetime.now()
             self.save()
