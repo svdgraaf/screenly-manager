@@ -1,11 +1,12 @@
 import select
 import sys
 import pybonjour
+import os
 
 
-name    = sys.argv[1]
-regtype = sys.argv[2]
-port    = int(sys.argv[3])
+name = os.uname()[1]  # use hostname
+regtype = '_screenly._tcp'
+port = 8080
 
 
 def register_callback(sdRef, flags, errorCode, name, regtype, domain):
