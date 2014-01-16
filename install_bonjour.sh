@@ -9,7 +9,7 @@ sudo apt-get -y -qq install libnss-mdns libavahi-compat-libdnssd1 > /dev/null
 sudo pip install pybonjour > /dev/null
 
 echo "Adding Screenly Bonjour to autostart (via Supervisord)"
-sudo ln -sfT ~/screenly-manager/supervisor_bonjour.conf /etc/supervisor/conf.d/supervisor_bonjour.conf
+sudo ln -sfT ~/screenly-manager/supervisor_screenly_bonjour.conf /etc/supervisor/conf.d/screenly_bonjour.conf
 sudo /etc/init.d/supervisor stop > /dev/null
 sudo /etc/init.d/supervisor start > /dev/null
 
