@@ -39,15 +39,15 @@ Edit crontab (eg: ``crontab -e``) and add this line (this will take a screenshot
 Register
 ========
 
-    python ./register.py Screeny web._tcp 80
+    python ./register.py
 
 Browse
 ======
 
-    python browse.py _test._tcp
+    python browse.py _screenly._tcp.
 
 (optional) Bonjour
 ======
-You can install bonjour on your instances which the manager will query.
+You can install bonjour on your clients with the following command.
 
     curl -sL https://raw2.github.com/svdgraaf/screenly-manager/master/install_bonjour.sh | bash

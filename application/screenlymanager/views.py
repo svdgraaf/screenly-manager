@@ -14,8 +14,11 @@ def index(request):
 
 def clients(request):
     clients = Client.objects.all()
-    clients_bonjour = get_services('_screenly._tcp.')
-    return render_to_response('clients.haml', {'clients': clients, "clients_bonjour": clients_bonjour}, RequestContext(request))
+
+    if request.GET.get('discover'):
+        _discover_bonjour_clients()
+
+    return render_to_response('clients.haml', {'clients': clients}, RequestContext(request))
 
 
 def client(request, pk):
@@ -24,3 +27,11 @@ def client(request, pk):
     return render_to_response('client.haml', locals(), RequestContext(request))
 
 
+def _discover_bonjour_clients():
+    clients_bonjour = get_services('_screenly._tcp.')
+    for client in clients_bonjour:
+        try:
+            Client.objects.get(last_ip=client['hosttarget'])
+        except:
+            obj = Client(name=client['fullname'].split('.')[0], last_ip=client['hosttarget'], port=client['port'])
+            obj.save()

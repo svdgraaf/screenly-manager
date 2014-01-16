@@ -1,25 +1,32 @@
 - extends 'base.haml'
 - load i18n
 
+- block 'header'
+    Clients
+    %a.btn.btn-primary.pull-right{"href":"{% url 'clients'%}?discover=1"}
+        Discover clients
+
 - block 'content'
     .span12
-        %h3 Clients
-        %table.table-striped.active-table
+        
+            
+        %table.table.table-striped.active-table
             %thead
                 %th
                 %th Name
                 %th Location
                 %th Status
-                %th IP
+                %th IP/hostname
                 %th Last active
                 %th
             - for client in clients
                 - with status=client.is_online
                     %tr
-                        %td
+                        %td{width:"300px"}
                             .thumbnail
                                 - if status
-                                    %img{'src':'{{client.screenshot_url}}'}
+                                    %a{href:"{{client.screenshot_url}}", target:"_blank"}
+                                        %img{'src':'{{client.screenshot_url}}'}
                                 - else
                                     %img{'src':'{{STATIC_URL}}/img/no_image.gif'}
                         %td
@@ -27,40 +34,22 @@
                                 {{client.name}}
                         %td
                             {{client.location}}
-                        %td
-                            
-                                - trans 'Status:'
-                                - if status
-                                    %span.label.label-success
-                                        - trans 'Online'
-                                - else
-                                    %span.label.label-warning
-                                        - trans 'Offline'
+                        %td 
+                            - if status
+                                %span.label.label-success
+                                    - trans 'Online'
+                            - else
+                                %span.label.label-warning
+                                    - trans 'Offline'
                         %td
                             ip: {{client.last_ip}}
                         %td
                             - if client.last_active
                                 - blocktrans with date=client.last_active
-                                    Last Active: {{date}}
+                                    {{date}}
                             - else
                                 - blocktrans
-                                    Last Active: Never
+                                    Never
                         %td
                             %a.btn.btn-inverse{'href':'http://{{client.last_ip}}:{{client.port}}/'}
                                 - trans 'Manage'
-
-        %h3 Clients Bonjour                        
-        %table.table-striped.active-table
-            %thead
-                %th Name
-                %th IP
-                %th
-            - for client in clients_bonjour
-                %tr
-                    %td
-                        {{client.fullname}}
-                    %td
-                        {{client.hosttarget}}
-                    %td
-                        %a.btn.btn-inverse{'href':'http://{{client.hosttarget}}:{{client.port}}/'}
-                            - trans 'Manage'

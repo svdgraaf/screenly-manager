@@ -5,7 +5,7 @@ import os
 
 
 class Client(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
     location = models.CharField(max_length=255, blank=True)
     last_ip = models.IPAddressField(blank=True)
     port = models.PositiveIntegerField(default='8080')
