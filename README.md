@@ -48,6 +48,6 @@ Browse
 
 (optional) Bonjour
 ======
-You can install bonjour on your instances wich the manager will query.
+You can install bonjour on your instances which the manager will query.
 
     curl -sL https://raw2.github.com/svdgraaf/screenly-manager/master/install_bonjour.sh | bash
