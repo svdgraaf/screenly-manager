@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 echo "Downloading screenly-manager..."
 git clone git://github.com/svdgraaf/screenly-manager.git ~/screenly-manager > /dev/null
 

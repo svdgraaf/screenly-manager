@@ -3,7 +3,6 @@ import sys
 import pybonjour
 
 
-regtype  = sys.argv[1]
 timeout  = 5
 resolved = []
 _services = []

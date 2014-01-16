@@ -5,7 +5,7 @@ import os
 
 
 name = os.uname()[1]  # use hostname
-regtype = '_test._tcp'
+regtype = '_screenly._tcp.'
 port = 8080
 
 
