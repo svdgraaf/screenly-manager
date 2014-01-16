@@ -46,7 +46,8 @@ Browse
 
     python browse.py _test._tcp
 
-(optional) Install bonjour on instances
+(optional) Bonjour
 ======
+You can install bonjour on your instances wich the manager will query.
 
     curl -sL https://raw2.github.com/svdgraaf/screenly-manager/master/install_bonjour.sh | bash
