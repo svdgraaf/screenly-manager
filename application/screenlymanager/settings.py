@@ -68,7 +68,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    # PROJECT_PATH + '/static/',
+    PROJECT_PATH + '/assets/project/',
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -80,7 +80,7 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
-    'coffeescript.finders.CoffeescriptFinder',
+
 )
 
 # Make this unique, and don't share it with anybody.
@@ -122,10 +122,29 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
-    'coffeescript',
+    'pipeline',
     'south',
     'screenlymanager',
 )
+
+'''
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+
+PIPELINE_COMPILERS = (
+  'pipeline.compilers.coffee.CoffeeScriptCompiler',
+)
+
+PIPELINE_JS_COMPRESSOR = None
+
+PIPELINE_JS = {
+    'main': {
+      'source_filenames': (
+        'js/screenly-ose.coffee',
+      ),
+      'output_filename': 'js/main.js',
+    }
+}
+'''
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

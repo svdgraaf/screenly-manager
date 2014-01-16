@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+from django.conf.urls.static import static
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -8,3 +9,4 @@ urlpatterns = patterns('',
     url(r'^client/(?P<pk>[0-9]+)/?$', 'screenlymanager.views.client', name='client-detail'),
     url(r'^admin/', include(admin.site.urls)),
 )
+

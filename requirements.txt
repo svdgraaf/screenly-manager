@@ -5,8 +5,9 @@ Markdown==2.3.1
 MarkupSafe==0.18
 PyHAML==0.1.9
 Pygments==1.6
-django-coffeescript==0.7.2
+django-pipeline
 hamlpy==0.82.2
 pybonjour==1.1.1
 six==1.3.0
 wsgiref==0.1.2
+south

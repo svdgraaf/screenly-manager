@@ -1,4 +1,4 @@
-- load coffeescript
+- load compressed
 - load i18n
 !!! 5
 %html
@@ -28,7 +28,7 @@
     %script{'src':'{{ STATIC_URL }}js/bootstrap-timepicker.js'}
 
     %script{'src':'{{ STATIC_URL }}js/moment.js'}
-    %script{'src':'{{ STATIC_URL }}{% coffeescript "js/screenly-ose.coffee" %}'}
+    {% compressed_js 'main' %}
 
     %body
         #request-error.navbar.navbar-fixed-top
