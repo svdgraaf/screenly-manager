@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Downloading screenly-manager..."
-git -q clone git://github.com/svdgraaf/screenly-manager.git ~/screenly-manager > /dev/null
+git clone git://github.com/svdgraaf/screenly-manager.git ~/screenly-manager > /dev/null
 
 echo "Installing packages"
 sudo apt-get -qq update > /dev/null
